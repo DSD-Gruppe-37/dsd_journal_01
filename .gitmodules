@@ -1,0 +1,3 @@
+[submodule "ex02"]
+	path = ex02
+	url = https://github.com/DSD-Gruppe-37/ex02_half_full_4bit_adders.git
