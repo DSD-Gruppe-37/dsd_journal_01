@@ -1,0 +1,26 @@
+% Her besvares spørgsmålet: ”Hvad?”.  Resultater i form af
+% simuleringwaveforms, RTL- og Technology Map Views og fotos fra tests
+% medtages her.  Vigtige observationer fremhæves nøgternt, f.eks.  med cirkle
+% og pile på figurer og med tilhørende tekst.  Du skal ikke tolke dine
+% resultater her, blot præsentere dem.
+
+\dsdfig{RTLHalfAdder}{6cm}{RTL View af Half Adderen.}{tpb}
+\dsdfig{RTLFullAdder}{0.75\textwidth}{RTL View af Full Adderen.}{tpb}
+\dsdfig{RTLFourBitAdder}{0.8\textwidth}{RTL View af Four bit Adderen.}{tpb}
+
+Det ses udfra de 3 RTL views (\figref{RTLHalfAdder}, \figref{RTLFullAdder}, \figref{RTLFourBitAdder}), at det er muligt at genbruge \texttt{entities} og dermed ende med en del \textit{byggeklodser}.
+
+\dsdfig{FunktionalDiagram}{0.75\textwidth}{Udsnit af den funktionelle simulering.}{tpb}
+
+\dsdfig{TimingDiagram}{0.75\textwidth}{Udsnit af den timing simulering. Her ses nogle små hazard spikes, markeret med rød.}{tpb}
+
+Det ses på \figref{FunktionalDiagram} at outputtet bliver påvirket af deres respektive inputs. 4-bit adderen addere altså.
+
+Hastigheden hvormed 4-bit-adderen kan operere er begrænset af gate'sne propagation time delay. De spikes vi så i \figref{TimingDiagram} er så kortvarige at de ikke ses med det blotte øje, men er vigtige at være opmærksomme på, hvis signalet skal sendes videre.
+
+På \figref{TimingDiagram} ses det at timingen også fungere.
+
+I \srcref{makefile_output.txt} ses en del af outputtet fra \texttt{makefilen} -
+her ses det at operationen var vellykket.
+
+\dsdsrc{makefile_output.txt}{Udsnit af output fra \texttt{makefile}-operationen, kørt via \texttt{cygwin64}}{tpb}

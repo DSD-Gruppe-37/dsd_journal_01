@@ -1,0 +1,32 @@
+\subsection{Half Adder}
+
+I denne del af øvelsen har vi implementeret en half-adder med de forskellige
+kodestilarter: dataflow, structural og behavioural. I \srcref{HalfAdder.vhd} ses
+vores implementering af en enkel HalfAdder entity med tre tilhørende
+architectures, en for hver kodestil.
+
+\dsdsrc{HalfAdder.vhd}{Implementering af half-adder}{tpb}
+
+\subsection{Full Adder}
+
+I denne del af øvelsen har vi implementeret en full-adder med en structural
+kodestil. Full-adderen bruger to half-adder entities og en enkelt OR-gate.
+Implementeringen ses her i \srcref{FullAdder.vhd}
+
+\dsdsrc{FullAdder.vhd}{Implementering af full-adder}{tpb}
+
+\subsection{4-bit ripple carry adder}
+
+I denne del af øvelsen  har vi implementeret en 4-bit adder med structural
+kodestil. 4-bit adderen bruger fire full-adder entities med deres carries i
+sekvens. Dette skaber en 4-bit ripple carry adder. Implementeringen ses i \srcref{FourBitAdder.vhd}
+
+\dsdsrc{FourBitAdder.vhd}{Implementering af 4-bit adder med full-adders}{tpb}
+
+
+\subsection{Test på boardet}
+
+Ved hjælp af JTAG programmering blev DE-2 boardet flashet og logikken kunne
+efterprøves som vist på \figref{sw04.png} og \figref{sw08.png}.
+\dsdfig{sw04.png}{6cm}{4 bit adderen viser 8 }{tpb}
+\dsdfig{sw08.png}{6cm}{4 bit adderen viser 30 + carry}{tpb}

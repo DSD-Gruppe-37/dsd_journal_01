@@ -1,0 +1,64 @@
+% Dette afsnit diskuterer og tolker på resultaterne og uddyber besvarelsen af
+% spørgsmålet: ”Hvad?” Fremhæv og forklar sammenhænge fundet i resultaterne
+% (Eller ikke fundet!).  F.eks.  hvordan afspejles implementeringen i
+% resultaterne?  Hvordan mapper kode til RTL-Views?  Hvordan fremgår det af
+% simuleringen at koden implementerer det ønskede?  Hvordan illustrerer fotoet
+% det?  Hvad er sammenhængen imellem emne, implementering og testresultater? 
+% Hvis en opgave har flere underopgaver og dermed resultater, kan man, hvis
+% det giver mening, lægge et diskussionsafsnit ved hvert resultat i stedet for
+% et samlet afsnit.
+
+\subsection{Half-adder}
+
+Alle tre kodestilarter producerer efter syntese det samme logiske kredsløb som
+på chippen bruger 2 logiske elementer. Funktionelt- og timingmæssigt opfører
+simulationerne for alle tre sig ens. Dette giver mening da alle tre half-addere
+er ens efter syntese.
+
+\subsection{Full-adder}
+
+I \figref{FullAdderTechnologyMap} ses det hvordan \emph{synthesizeren} har mappet Full-adderen ned til blot 2 logiske elementer, istedet for de 5 som den var designet med.
+
+\dsdfig{FullAdderTechnologyMap}{9cm}{Technology Map View af Full-Adderen (post-mapping).}{tpb}
+
+\subsection{4-bit adder}
+
+% TODO diskussion om 4-bit adder
+
+\dsdfig{Technologymapview}{9cm}{Technology Map View (post-mapping).}{tpb}
+
+På \figref{Technologymapview} ses det hvordan \emph{synthesizeren} får mappet funktionerne ned på den aktuelle chip.
+
+\subsection{Pipeline og command line tools}
+
+Når et program bygges og flashes til DE2-boardet gennemgår det en række
+forskellige steps (en build pipeline).
+
+\emph{Synthesis} oversætter koden til et logisk kredsløb af almindelige logiske elementer (også kaldet
+RTL).
+
+\emph{Fitting} (eller \emph{place-and-route}) oversætter det logiske
+kredsløb fra forrige step til enhedsspecifikke logiske elementer og mapper
+input/output til brugerdefinerede pins eller automatisk valgte pins hvis de ikke
+er definerede.
+
+Når et enhedsspecifik kredsløb er lavet af fitteren kan en \emph{timing analysis} vise om der er tidsmæssige restriktioner i enhedens
+logiske elementer, der kan give problemer når programmet kører.
+
+En \emph{simulator} kan bruges til at verificere programmets outputs baseret på
+forskellige inputs. En simulering uden timing kan verificere programmets
+funktionalitet, imens en simulering med timing kan verificere at programmet
+eksekverer problemfrit på en bestemt enhed.
+
+Når alle de forrige steps er gennemkørt kan de enhedsspecifikke
+konfigurationsfiler overføres til \emph{device programmeren}, som derefter
+programmerer chippen.
+
+\subsubsection{Command line tools}
+
+Alle disse steps og værktøjer beskrevet ovenfor kan køres gennem en grafisk IDE
+som f.eks. Quartus II, men er også tilgængelige som command line programmer.
+Selvom det er nemt at bruge den grafiske IDE når man prototyper et program, så
+gør en command line pipeline det nemt at automatisere hele processen, så man
+sikrer at alle steps gennemløbes på samme måde hver gang og det endelige program
+altid er verificeret.
